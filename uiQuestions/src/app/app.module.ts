@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HtmlCssQuestionsComponent } from './html-css-questions/html-css-questions.component';
+import { HighlightDirective } from './highlight.directive';
+import { CustomPipe } from './custom.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HtmlCssQuestionsComponent,
+    HighlightDirective,
+    CustomPipe
   ],
   imports: [
     BrowserModule,
