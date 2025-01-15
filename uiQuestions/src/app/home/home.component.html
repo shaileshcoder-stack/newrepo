@@ -1,0 +1,45 @@
+<p>home works!</p>
+<form [formGroup]="myForm" (ngSubmit) ="onSubmit ()">
+    <label f or="name">Name:</label>
+    <input id="name" formControlName="name" />
+    <div *ngIf="myForm.get('name')?.invalid && myForm.get('name')?.touched">
+      Name is required and must be at least 3 characters.
+    </div>
+  
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+    <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+      A valid email is required.
+    </div>
+  
+    <h3>Skills</h3>
+    <div formArrayName="skills">
+      <div *ngFor="let skill of skills.controls; let i = index">
+        <input [formControlName]="i" />
+        <button type="button" (click)="skills.removeAt(i)">Remove</button>
+      </div>
+    </div>
+  
+    <button type="button" (click)="addSkill()">Add Skill</button>
+    <button type="submit" [disabled]="myForm.invalid">Submit</button>
+  </form>
+
+   <h3>Submitted Data</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Skills</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of submittedData ">
+        <td>{{ data.name }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.skills.join(', ')}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  

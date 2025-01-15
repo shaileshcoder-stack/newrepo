@@ -5,6 +5,8 @@ import { filterNumbers, greet, sum } from  '../app/modele/coomon';
 import {Userservice} from '../app/modele/user.service'
 
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { Observable, Subscriber } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
  
 @Component({
@@ -15,28 +17,24 @@ import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '
 })
 
 export class AppComponent   implements OnInit{
+
+  val ="";
   // handlmsgclickeed(message:string) {
   //   console.log('Message from child:', message);
   // }
   isLoading = true;
   // 
     constructor(private router: Router) {}
-
-  // ngOnInit() {
-  //   this.router.events.subscribe((event: Event) => {
-  //     if (event instanceof NavigationStart) {
-  //       this.isLoading = true; // Show loading spinner
-  //     }
-
-  //     if (
-  //       event instanceof NavigationEnd || 
-  //       event instanceof NavigationCancel || 
-  //       event instanceof NavigationError
-  //     ) {
-  //       this.isLoading = false; // Hide loading spinner
-  //     }
-  //   });
-  // }
+ observable =new Observable(Subscriber =>{
+  Subscriber.next('hello');
+  Subscriber.next('world');
+  Subscriber.complete();
+});
+// Subscribe to the Observable
+// observable.Subscribe{
+//   next: value => console.log(value),
+//   complete: () => console.log('Observable completed'),
+// });
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
@@ -47,8 +45,19 @@ export class AppComponent   implements OnInit{
         console.error('Navigation error:', event.error);
       }
     });
+
+    this.observable
+  }
+
+  onSubmit(form: NgForm) {
+    console.log('Form Submitted!', form.value); // Log the form data
+    // Perform additional actions, such as sending the data to a server
+    this.val =form.value.name;
+
+    form.reset();
   }
   }
+
   // handleMessage(message: string) {
   //   console.log('Message from child:', message);
   // }

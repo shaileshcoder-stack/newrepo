@@ -6,17 +6,26 @@ import { AppComponent } from './app.component';
 import { HtmlCssQuestionsComponent } from './html-css-questions/html-css-questions.component';
 import { HighlightDirective } from './highlight.directive';
 import { CustomPipe } from './custom.pipe';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HtmlCssQuestionsComponent,
     HighlightDirective,
-    CustomPipe
+    CustomPipe,
+    HomeComponent,
+    AboutComponent,
+    PageNotFoundComponentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

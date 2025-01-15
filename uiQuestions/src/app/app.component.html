@@ -1,16 +1,21 @@
 
 
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <label for="name">Name:</label>
+    <input id="name" name="name" ngModel required>
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+  </form>
+  <h1>{{this.val}}</h1>
 <div >
-    <h1>Parent Component</h1>
+    <h1 > Parent Component</h1>
     <app-html-css-questions >
-    
-
     </app-html-css-questions>
-
-
-
 </div>
 
 <!-- <div *ngIf="isLoading" class="loading-spinner">Loading...</div> -->
 <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
+
+
+  
  <router-outlet></router-outlet>
